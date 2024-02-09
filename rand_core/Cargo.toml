@@ -24,10 +24,11 @@ rustdoc-args = ["--cfg", "doc_cfg"]
 all-features = true
 
 [features]
+default = ["std"]
 std = ["alloc", "getrandom", "getrandom/std"]    # use std library; should be default but for above bug
 alloc = []  # enables Vec and Box support without std
 serde1 = ["serde"] # enables serde for BlockRng wrapper
 
 [dependencies]
-serde = { version = "1", features = ["derive"], optional = true }
+serde = { version = "1", default-features = false, features = ["derive"], optional = true }
 getrandom = { version = "0.2", default-features = false, optional = true }

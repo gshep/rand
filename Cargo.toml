@@ -33,7 +33,7 @@ serde1 = ["serde", "rand_core/serde1"]
 
 # Option (enabled by default): without "std" rand uses libcore; this option
 # enables functionality expected to be available on a standard platform.
-std = ["rand_core/std", "rand_chacha/std", "alloc", "getrandom", "libc"]
+std = ["rand_core/std", "rand_chacha/std", "alloc", "getrandom", "libc", "log/std", "serde/std"]
 
 # Option: "alloc" enables support for Vec and Box when not using "std"
 alloc = ["rand_core/alloc"]
@@ -63,9 +63,9 @@ members = [
 ]
 
 [dependencies]
-rand_core = { path = "rand_core", version = "0.6.0" }
-log = { version = "0.4.4", optional = true }
-serde = { version = "1.0.103", features = ["derive"], optional = true }
+rand_core = { path = "rand_core", default-features = false, version = "0.6.0" }
+log = { version = "0.4.4", default-features = false, optional = true }
+serde = { version = "1.0.103", default-features = false, features = ["derive"], optional = true }
 rand_chacha = { path = "rand_chacha", version = "0.3.0", default-features = false, optional = true }
 
 [dependencies.packed_simd]
